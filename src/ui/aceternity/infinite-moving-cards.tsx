@@ -104,7 +104,7 @@ export const InfiniteMovingCards = ({
                 alt="/"
                 width={50}
                 height={50}
-                className="aspect-square w-full h-28"
+                className="aspect-square w-full h-64"
               />
               <div className="relative z-20 mt-6 flex flex-row items-center">
                 <span className="flex flex-col gap-1">

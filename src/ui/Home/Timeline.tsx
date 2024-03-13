@@ -58,7 +58,7 @@ const Timeline = (props: Props) => {
 
         <div className="w-full h-screen overflow-y-auto snap-y snap-mandatory flex flex-col items-center p-5 my-3 gap-16">
           {links.map((item, i) => (
-            <div className="w-full h-full snap-center bg-red-950 rounded-full">
+            <div key={i} className="w-full h-full snap-center bg-red-950 rounded-full">
               <AnimatedCard
                 key={i}
                 name={item.title}
@@ -74,7 +74,7 @@ const Timeline = (props: Props) => {
   );
 };
 
-const AnimatedCard = ({
+export const AnimatedCard = ({
   name,
   imageSrc,
   desc,
