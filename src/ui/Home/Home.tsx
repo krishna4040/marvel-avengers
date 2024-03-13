@@ -3,6 +3,7 @@ import { Typography } from "@mui/material";
 import Header from "./Header";
 import Slider from "./Slider";
 import Navbar from "./Navbar";
+import Timeline from "./Timeline";
 
 type Props = {};
 
@@ -13,6 +14,7 @@ const Home = (props: Props) => {
         <Navbar />
         <Header />
         <Slider />
+        <Timeline />
       </section>
     </>
   );
