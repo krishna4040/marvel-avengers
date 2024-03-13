@@ -3,7 +3,10 @@ import React from "react";
 const loading = () => {
   return (
     <>
-      <div role="status">
+      <div
+        role="status"
+        className="w-full h-full flex flex-col items-center justify-center bg-slate-950"
+      >
         <svg
           aria-hidden="true"
           className="inline w-10 h-10text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
