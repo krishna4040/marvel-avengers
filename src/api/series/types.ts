@@ -54,3 +54,5 @@ export const MyResponseSchema = z.object({
     data: DataSchema,
     etag: z.string(),
 });
+
+export type Series = z.infer<typeof ResultSchema>

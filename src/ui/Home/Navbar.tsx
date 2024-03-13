@@ -11,16 +11,16 @@ import LoginIcon from "@mui/icons-material/Login";
 const Navbar = () => {
   const links = [
     {
-      name: "Movies",
-      link: "",
+      name: "Series",
+      link: "/series",
     },
     {
       name: "Characters",
-      link: "",
+      link: "/characters",
     },
     {
       name: "Events",
-      link: "",
+      link: "/events",
     },
   ];
 
