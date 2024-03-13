@@ -22,12 +22,11 @@ const Navbar = () => {
       name: "Events",
       link: "",
     },
-    {name: "Merchandise",
-    link: "merchandise",},
+    { name: "Merchandise", link: "/merchandise" },
     {
-      name: "Forums",
-    link: "",
-    }
+      name: "Com-Forums",
+      link: "/Community",
+    },
   ];
 
   const [showNavbar, setShowNavbar] = useState(true);
