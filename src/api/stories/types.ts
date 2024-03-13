@@ -1,10 +1,5 @@
 import { z } from 'zod';
 
-const UrlSchema = z.object({
-  type: z.string(),
-  url: z.string(),
-});
-
 const ItemSchema = z.object({
   resourceURI: z.string(),
   name: z.string(),
@@ -16,8 +11,8 @@ const ThumbnailSchema = z.object({
 });
 
 const ResourceSchema = z.object({
-  available: z.string(),
-  returned: z.string(),
+  available: z.number(),
+  returned: z.number(),
   collectionURI: z.string(),
   items: z.array(ItemSchema),
 });
@@ -28,26 +23,24 @@ const ResultSchema = z.object({
   description: z.string(),
   resourceURI: z.string(),
   type: z.string(),
-  modified: z.string(),
-  thumbnail: ThumbnailSchema,
+  // thumbnail: ThumbnailSchema,
   comics: ResourceSchema,
   series: ResourceSchema,
   events: ResourceSchema,
   characters: ResourceSchema,
   creators: ResourceSchema,
-  originalissue: ItemSchema,
 });
 
 const DataSchema = z.object({
-  offset: z.string(),
-  limit: z.string(),
-  total: z.string(),
-  count: z.string(),
+  offset: z.number(),
+  limit: z.number(),
+  total: z.number(),
+  count: z.number(),
   results: z.array(ResultSchema),
 });
 
 export const MyResponseSchema = z.object({
-  code: z.string(),
+  code: z.number(),
   status: z.string(),
   copyright: z.string(),
   attributionText: z.string(),

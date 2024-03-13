@@ -6,7 +6,7 @@ import React from 'react'
 
 const Page = async () => {
 
-  const data = await getSeries()
+  const data = await getStories()
   console.log(data)
 
   return (
