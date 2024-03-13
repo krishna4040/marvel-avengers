@@ -28,6 +28,7 @@ const ResultSchema = z.object({
     description: z.string().nullable(),
     resourceURI: z.string(),
     urls: z.array(UrlSchema),
+    // startyear, endyear num
     rating: z.string(),
     thumbnail: ThumbnailSchema,
     comics: ResourceSchema,

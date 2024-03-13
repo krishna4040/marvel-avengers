@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 export const CharacterSchema = z.object({
-  id: z.union([z.string(), z.number()]),
+  id: z.number(),
   name: z.string(),
   description: z.string().nullable(),
   modified: z.union([z.date(), z.string()]).transform(value => {
