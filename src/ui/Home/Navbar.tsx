@@ -25,7 +25,7 @@ const Navbar = (props: Props) => {
 
   return (
     <>
-      <nav className="fixed w-full top-0 left-0 right-0 p-2">
+      <nav className="fixed w-full top-0 left-0 right-0 p-2 z-10">
         <div className="p-5 flex flex-row items-center justify-between w-fit m-auto bg-slate-900 rounded-2xl">
           <div className="mr-11">
             <Link href={"/"}>
