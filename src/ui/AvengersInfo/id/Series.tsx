@@ -78,10 +78,10 @@ const Series = async ({ id }: { id: number }) => {
                 </div>
             </div>
             <div className='mt-40 w-full flex flex-col gap-4'>
-                <InfiniteMovingCards items={creators} direction='left' />
+                {/* <InfiniteMovingCards items={creators} direction='left' />
                 <InfiniteMovingCards items={characters} direction='right' />
                 <InfiniteMovingCards items={stories} direction='right' />
-                <InfiniteMovingCards items={comics} direction='left' />
+                <InfiniteMovingCards items={comics} direction='left' /> */}
             </div>
         </div>
     )

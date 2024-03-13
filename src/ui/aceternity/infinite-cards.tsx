@@ -1,5 +1,6 @@
 "use client";
 import { cn } from "@/utils/cn";
+import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
 export const InfiniteMovingCards = ({
@@ -11,6 +12,7 @@ export const InfiniteMovingCards = ({
 }: {
   items: {
     name: string;
+    image: string
   }[];
   direction?: "left" | "right";
   speed?: "fast" | "normal" | "slow";
@@ -96,9 +98,13 @@ export const InfiniteMovingCards = ({
                 aria-hidden="true"
                 className="user-select-none -z-1 pointer-events-none absolute -left-0.5 -top-0.5 h-[calc(100%_+_4px)] w-[calc(100%_+_4px)]"
               ></div>
-              <span className=" relative z-20 text-sm leading-[1.6] text-gray-100 font-normal">
-                {/* {item.quote} */}
-                Image
+              <span className=" relative z-20 text-sm leading-[1.6] text-gray-100 font-normal mx-auto w-full">
+                <Image
+                  src={item.image}
+                  width={200}
+                  height={200}
+                  alt="infinite-scroll"
+                />
               </span>
               <div className="relative z-20 mt-6 flex flex-row items-center">
                 <span className="flex flex-col gap-1">

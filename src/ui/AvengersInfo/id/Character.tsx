@@ -9,7 +9,8 @@ const Character = async ({ id }: { id: number }) => {
     const character = await getCharacterById(id)
     const series = character.series.items.map(series => {
         return {
-            name: series.name
+            name: series.name,
+            image: character.urls[0].url
         }
     })
     const stories = character.stories.items.map(story => {
@@ -79,10 +80,10 @@ const Character = async ({ id }: { id: number }) => {
                 </div>
             </div>
             <div className='mt-40 w-full flex flex-col gap-4'>
-                <InfiniteMovingCards items={series} direction='left' />
+                {/* <InfiniteMovingCards items={series} direction='left' />
                 <InfiniteMovingCards items={events} direction='right' />
                 <InfiniteMovingCards items={stories} direction='right' />
-                <InfiniteMovingCards items={comics} direction='left' />
+                <InfiniteMovingCards items={comics} direction='left' /> */}
             </div>
         </div>
     )
