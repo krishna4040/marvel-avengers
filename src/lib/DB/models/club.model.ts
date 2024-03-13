@@ -1,6 +1,6 @@
 import mongoose, { Schema, Model, Document, Types } from "mongoose";
 
-interface Club extends Document {
+export interface Club extends Document {
   users: Types.ObjectId[];
   name: string;
   image: string;

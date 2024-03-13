@@ -1,6 +1,6 @@
 import mongoose, { Schema, Model, Document, Types } from "mongoose";
 
-interface Talk extends Document {
+export interface Talk extends Document {
   clubId: Types.ObjectId;
   talks: {
     userId: Types.ObjectId;
