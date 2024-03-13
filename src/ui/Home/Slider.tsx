@@ -1,13 +1,27 @@
 "use client";
-
-import React from "react";
+import TextTransition , {presets} from "react-text-transition"
+import React , { useEffect , useState } from "react";
 import { CardBody, CardContainer, CardItem } from "@/ui/aceternity/3d-card";
 import { Typography } from "@mui/material";
 import StarOutlineIcon from "@mui/icons-material/StarOutline";
+import {Swiper, SwiperSlide} from 'swiper/react'
+import { EffectCoverflow, Pagination , Autoplay } from 'swiper/modules';
+import 'swiper/css/effect-coverflow';
+import 'swiper/css/pagination';
+import 'swiper/css'
+
 
 type Props = {};
 
 const Slider = (props: Props) => {
+  const [index , setIndex] = useState(0)
+  const Text = ['Movies' , 'Series' , 'Events'];
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setIndex((prevIndex) => (prevIndex + 1) );
+    } , 2000);
+    return () => clearTimeout(intervalId);
+  } , [])
   const sliderData = [
     {
       title: "Thor",
@@ -43,33 +57,58 @@ const Slider = (props: Props) => {
 
   return (
     <>
-      <div>
-        <Typography
-          variant="caption"
-          component={"h2"}
-          className="text-white font-black px-5 py-4 text-8xl text-center"
-        >
-          {`[ Movies ]-[ Events ]-[ Comics ]`}
+    <div className="w-full">
+      <div className="w-full flex flex-row items-center justify-center">
+        <div className="flex items-center justify-center">
+          <Typography
+            variant="caption"
+            component={"h2"}
+            className="text-white font-black w-[100%] mx-auto mt-4 px-5 py-4 text-8xl border border-white text-center"
+          >
+            <TextTransition springConfig={presets.wobbly}>
+              {Text[index % Text.length]}
+            </TextTransition>
+          </Typography>
           <Typography
             variant="caption"
             component={"span"}
-            className="text-black bg-yellow-400 p-3 rounded-md font-black"
+            className="text-black w-[100%] bg-yellow-400 p-3 rounded-md font-black"
           >
             Latest
           </Typography>
-        </Typography>
-        <div className="h-fit w-full flex flex-row items-center justify-start overflow-y-auto gap-16 p-5">
-          {sliderData.map((item, i) => (
-            <SliderComponent
-              key={i}
-              title={item.title}
-              imageSrc={item.imageSrc}
-              desc={item.imageSrc}
-            />
-          ))}
         </div>
       </div>
-    </>
+      <Swiper
+       effect={'coverflow'}
+       grabCursor={true}
+       centeredSlides={true}
+       slidesPerView={3}
+       autoplay={{delay: 3000}}
+       loop={true}
+       coverflowEffect={{
+         rotate: 50,
+         stretch: 0,
+         depth: 100,
+         modifier: 1,
+         slideShadows: true,
+       }}
+
+       pagination={true}
+       modules={[EffectCoverflow, Pagination , Autoplay]}
+
+      > 
+        {sliderData.map((item, i) => (
+          <SwiperSlide key={i}>
+            <SliderComponent
+              title={item.title}
+              imageSrc={item.imageSrc}
+              desc = {item.desc}
+            />
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </div>
+  </>
   );
 };
 
@@ -87,7 +126,7 @@ const SliderComponent = ({
       <CardBody className="bg-gray-50 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6 border  ">
         <CardItem
           translateZ="50"
-          className="text-xl font-bold text-neutral-600 dark:text-white"
+          className="text-2xl mx-auto font-bold text-neutral-600 dark:text-white"
         >
           {title}
         </CardItem>
