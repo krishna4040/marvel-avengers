@@ -4,11 +4,7 @@ import React from "react";
 import { Label } from "@/ui/aceternity/label";
 import { Input } from "@/ui/aceternity/input";
 import { cn } from "@/utils/cn";
-import {
-  IconBrandGithub,
-  IconBrandGoogle,
-  IconBrandOnlyfans,
-} from "@tabler/icons-react";
+import { IconBrandGithub, IconBrandGoogle } from "@tabler/icons-react";
 import FaceIcon from "@mui/icons-material/Face";
 
 type Props = {};

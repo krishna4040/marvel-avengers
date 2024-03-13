@@ -12,28 +12,28 @@ type Props = {};
 const Timeline = (props: Props) => {
   const links = [
     {
-      title: "Title 1",
-      desc: "Feige announced the Phase Four slate at San Diego Comic-Con, consisting of films and television event series on Disney+",
-      img: "",
-      link: "character/captain-america",
+      title: "Hella",
+      desc: "She is based on the figure of Hel from Norse mythology, who is the ruler of the realm of the dead, also called Hel.",
+      img: "/hella.jpg",
+      link: "character/hella",
     },
     {
-      title: "Title 2",
-      desc: "Feige announced the Phase Four slate at San Diego Comic-Con, consisting of films and television event series on Disney+",
-      img: "",
-      link: "character/iron-man",
+      title: "Hulk",
+      desc: "The Hulk's alter ego is Dr. Bruce Banner, a brilliant scientist who was exposed to gamma radiation during an experimental bomb test.",
+      img: "/hulk.jpg",
+      link: "character/hulk",
     },
     {
-      title: "Title 3",
-      desc: "Feige announced the Phase Four slate at San Diego Comic-Con, consisting of films and television event series on Disney+",
-      img: "",
+      title: "Spiderman",
+      desc: "The story of Spider-Man revolves around Peter Parker, a high school student who gains spider-like abilities after being bitten by a radioactive spider.",
+      img: "/spiderman.jpg",
       link: "character/thor",
     },
     {
-      title: "Title 4",
-      desc: "Feige announced the Phase Four slate at San Diego Comic-Con, consisting of films and television event series on Disney+",
-      img: "",
-      link: "character/tony-stark",
+      title: "Thor",
+      desc: "Thor is a prominent character in Norse mythology and also a popular superhero in Marvel Comics. ",
+      img: "/thor.jpg",
+      link: "character/thor",
     },
   ];
 
@@ -52,7 +52,7 @@ const Timeline = (props: Props) => {
             component={"span"}
             className="text-black bg-yellow-400 p-3 rounded-md font-black"
           >
-            Latest
+            Here
           </Typography>
         </Typography>
 
@@ -96,7 +96,11 @@ const AnimatedCard = ({
             <span className="text-slate-500">{desc.substring(0, 50)}</span>
           </div>
           <div className="flex flex-1 w-full rounded-lg mt-4 bg-gradient-to-br from-violet-500 via-purple-500 to-blue-500">
-            <img src="/bg-home.jpg" alt="/" />
+            <img
+              src={imageSrc}
+              alt="/"
+              className="w-full aspect-video rounded-md"
+            />
           </div>
         </div>
       </PinContainer>
