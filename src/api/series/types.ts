@@ -16,47 +16,37 @@ const ThumbnailSchema = z.object({
 });
 
 const ResourceSchema = z.object({
-    available: z.string(),
-    returned: z.string(),
+    available: z.union([z.string(), z.number()]),
+    returned: z.union([z.string(), z.number()]),
     collectionURI: z.string(),
     items: z.array(ItemSchema),
 });
 
-const EventSummarySchema = z.object({
-    resourceURI: z.string(),
-    name: z.string(),
-});
-
 const ResultSchema = z.object({
-    id: z.string(),
+    id: z.number(),
     title: z.string(),
-    description: z.string(),
+    description: z.string().nullable(),
     resourceURI: z.string(),
     urls: z.array(UrlSchema),
-    startYear: z.string(),
-    endYear: z.string(),
     rating: z.string(),
-    modified: z.string(),
     thumbnail: ThumbnailSchema,
     comics: ResourceSchema,
     stories: ResourceSchema,
     events: ResourceSchema,
     characters: ResourceSchema,
     creators: ResourceSchema,
-    next: ItemSchema,
-    previous: ItemSchema,
 });
 
 const DataSchema = z.object({
-    offset: z.string(),
-    limit: z.string(),
-    total: z.string(),
-    count: z.string(),
+    offset: z.number(),
+    limit: z.number(),
+    total: z.number(),
+    count: z.number(),
     results: z.array(ResultSchema),
 });
 
 export const MyResponseSchema = z.object({
-    code: z.string(),
+    code: z.number(),
     status: z.string(),
     copyright: z.string(),
     attributionText: z.string(),
