@@ -1,9 +1,9 @@
 import React from "react";
-import { Typography } from "@mui/material";
 import Header from "./Header";
 import Slider from "./Slider";
 import Navbar from "./Navbar";
 import Timeline from "./Timeline";
+import Sponsers from "./Sponsers";
 
 type Props = {};
 
@@ -15,6 +15,7 @@ const Home = (props: Props) => {
         <Header />
         <Slider />
         <Timeline />
+        <Sponsers />
       </section>
     </>
   );
