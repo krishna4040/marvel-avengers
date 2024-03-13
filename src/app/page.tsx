@@ -1,8 +1,10 @@
+
+import React from "react";
+import { HomePage } from "@/ui/ComponentExporters";
 import { getComics } from '@/api/comics/main'
 import { getEvents } from '@/api/events/main'
 import { getSeries } from '@/api/series/main'
 import { getStories } from '@/api/stories/main'
-import React from 'react'
 
 const Page = async () => {
 
@@ -10,10 +12,10 @@ const Page = async () => {
   console.log(data)
 
   return (
-    <div>
-      Home
-    </div>
-  )
-}
+    <>
+      <HomePage />
+    </>
+  );
+};
 
-export default Page
+export default Page;
