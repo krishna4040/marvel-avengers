@@ -14,8 +14,17 @@ const Slider = (props: Props) => {
         <Typography
           variant="caption"
           component={"h2"}
-          className="text-white font-black px-5 py-4 text-8xl"
-        >{`[ Movies ]-[ Events ]-[ Comics ]`}</Typography>
+          className="text-white font-black px-5 py-4 text-8xl text-center"
+        >
+          {`[ Movies ]-[ Events ]-[ Comics ]`}
+          <Typography
+            variant="caption"
+            component={"span"}
+            className="text-black bg-yellow-400 p-3 rounded-md font-black"
+          >
+            Latest
+          </Typography>
+        </Typography>
         <div className="h-fit w-full flex flex-row items-center justify-start overflow-y-auto gap-16 p-5">
           {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item, i) => (
             <SliderComponent key={i} />
