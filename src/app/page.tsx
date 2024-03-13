@@ -1,11 +1,12 @@
-import React from 'react'
+import React from "react";
+import { HomePage } from "@/ui/ComponentExporters";
 
 const Page = () => {
   return (
-    <div>
-      Home
-    </div>
-  )
-}
+    <>
+      <HomePage />
+    </>
+  );
+};
 
-export default Page
+export default Page;
