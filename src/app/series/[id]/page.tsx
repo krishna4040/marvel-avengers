@@ -1,8 +1,11 @@
 import React from 'react'
+import Series from '@/ui/AvengersInfo/id/Series'
 
-const Page = () => {
+const Page = ({ params }: { params: { id: number } }) => {
   return (
-    <div>Page</div>
+    <div>
+      <Series id={params.id} />
+    </div>
   )
 }
 
