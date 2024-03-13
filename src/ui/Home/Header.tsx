@@ -1,23 +1,43 @@
-import React from "react";
+
+"use client"
+import React, { useState, useEffect } from "react";
 import { Typography } from "@mui/material";
+import Navbar from "./Navbar"; // Import the Navbar component
 
-type Props = {};
+const Header = () => {
+  const [showNavbar, setShowNavbar] = useState(true);
 
-const Header = (props: Props) => {
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      if (currentScrollY > 0) {
+        setShowNavbar(false);
+      } else {
+        setShowNavbar(true);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <>
-      <div className="w-full h-screen bg-red-200 relative">
+      <div className="relative h-full w-full">
         <video
-          src="/bg-video.mp4"
+          src="./bg-video.mp4"
           muted
           autoPlay
           loop
-          className="w-full h-full aspect-video object-cover"
-          style={{
-            transform: "rotate(-90deg)",
-          }}
+          className="w-full h-screen aspect-video object-cover"
+          // style={{
+          //   transform: "rotate(-90deg)",
+          // }}
         ></video>
-        <div className="absolute bg-black w-full flex items-center flex-col p-3 h-full">
+        <div className="absolute top-0 left-0 w-full bg-black bg-opacity-50 flex flex-col items-center justify-center h-screen text-left">
           <Typography
             variant="h1"
             component={"h1"}
@@ -38,15 +58,17 @@ const Header = (props: Props) => {
             className="text-white font-medium text-lg"
           >
             With great power comes great responsibility.
-            <Typography
+            {/* <Typography
               variant="subtitle2"
               component={"span"}
               className="text-red-500 bg-white p-2 ml-2 rounded-md"
             >
               `Stan Lee`
-            </Typography>
+            </Typography> */}
           </Typography>
         </div>
+        {/* Include the Navbar component here */}
+        {showNavbar && <Navbar />}
       </div>
     </>
   );
