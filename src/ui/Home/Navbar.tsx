@@ -28,9 +28,7 @@ const Navbar = () => {
     const handleScroll = () => {
       const currentScrollPos = window.pageYOffset;
 
-      setShowNavbar(
-        currentScrollPos < prevScrollPos || currentScrollPos <= 0
-      );
+      setShowNavbar(currentScrollPos < prevScrollPos || currentScrollPos <= 0);
       setPrevScrollPos(currentScrollPos);
     };
 
@@ -47,7 +45,7 @@ const Navbar = () => {
         showNavbar ? "" : "-translate-y-full"
       }`}
     >
-      <div className="p-5 flex flex-row items-center justify-between w-fit m-auto bg-slate-900 rounded-2xl">
+      <div className="p-5 flex flex-row items-center justify-between w-fit m-auto bg-slate-950 rounded-2xl">
         <div className="mr-11">
           <Link href={"/"}>
             <Image
