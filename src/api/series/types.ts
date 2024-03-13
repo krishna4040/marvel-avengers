@@ -27,7 +27,7 @@ const EventSummarySchema = z.object({
     name: z.string(),
 });
 
-export const SeriesSchema = z.object({
+const ResultSchema = z.object({
     id: z.string(),
     title: z.string(),
     description: z.string(),
@@ -47,20 +47,20 @@ export const SeriesSchema = z.object({
     previous: ItemSchema,
 });
 
-export const SeriesArraySchema = z.object({
+const DataSchema = z.object({
     offset: z.string(),
     limit: z.string(),
     total: z.string(),
     count: z.string(),
-    results: z.array(SeriesSchema),
+    results: z.array(ResultSchema),
 });
 
-const MyResponseSchema = z.object({
+export const MyResponseSchema = z.object({
     code: z.string(),
     status: z.string(),
     copyright: z.string(),
     attributionText: z.string(),
     attributionHTML: z.string(),
-    data: SeriesArraySchema,
+    data: DataSchema,
     etag: z.string(),
 });

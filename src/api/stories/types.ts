@@ -46,7 +46,7 @@ const DataSchema = z.object({
   results: z.array(ResultSchema),
 });
 
-const MyResponseSchema = z.object({
+export const MyResponseSchema = z.object({
   code: z.string(),
   status: z.string(),
   copyright: z.string(),

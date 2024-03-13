@@ -54,7 +54,7 @@ const EventSummarySchema = z.object({
     name: z.string(),
 });
 
-export const ResultSchema = z.object({
+const ResultSchema = z.object({
     id: z.number(),
     digitalId: z.string(),
     title: z.string(),
@@ -86,7 +86,7 @@ export const ResultSchema = z.object({
     events: ResourceSchema,
 });
 
-export const DataSchema = z.object({
+const DataSchema = z.object({
     offset: z.number(),
     limit: z.number(),
     total: z.number(),
@@ -94,7 +94,7 @@ export const DataSchema = z.object({
     results: z.array(ResultSchema),
 });
 
-const MyResponseSchema = z.object({
+export const MyResponseSchema = z.object({
     code: z.string(),
     status: z.string(),
     copyright: z.string(),

@@ -27,7 +27,7 @@ const NextPreviousSchema = z.object({
     name: z.string(),
 });
 
-export const EventSchema = z.object({
+const ResultSchema = z.object({
     id: z.string(),
     title: z.string(),
     description: z.string(),
@@ -46,22 +46,22 @@ export const EventSchema = z.object({
     previous: NextPreviousSchema,
 });
 
-export const EventsSchema = z.object({
+const DataSchema = z.object({
     offset: z.string(),
     limit: z.string(),
     total: z.string(),
     count: z.string(),
-    results: z.array(EventSchema),
+    results: z.array(ResultSchema),
 });
 
-const MyResponseSchema = z.object({
+export const MyResponseSchema = z.object({
     code: z.string(),
     status: z.string(),
     copyright: z.string(),
     attributionText: z.string(),
     attributionHTML: z.string(),
-    data: EventsSchema,
+    data: DataSchema,
     etag: z.string(),
 });
 
-export type Event = z.infer<typeof EventSchema>
+export type Event = z.infer<typeof ResultSchema>
