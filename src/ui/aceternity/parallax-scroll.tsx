@@ -71,7 +71,13 @@ export const ParallaxScroll = ({
         </div>
         <div className="grid gap-10">
           {secondPart.map((el, idx) => (
-            <motion.div style={{ y: translateSecond }} key={"grid-2" + idx}>
+            <motion.div style={{ y: translateSecond }} key={"grid-2" + idx}
+              onClick={() => {
+                // Id is compolusory here if Id not received code will crash
+                const id = info.find((info) => info.images === el)?.id!
+                router.push(`${route}/${id}`)
+              }}
+            >
               <Image
                 src={el}
                 className="h-80 w-full object-cover object-left-top rounded-lg gap-10 !m-0 !p-0"
@@ -84,7 +90,13 @@ export const ParallaxScroll = ({
         </div>
         <div className="grid gap-10">
           {thirdPart.map((el, idx) => (
-            <motion.div style={{ y: translateThird }} key={"grid-3" + idx}>
+            <motion.div style={{ y: translateThird }} key={"grid-3" + idx}
+              onClick={() => {
+                // Id is compolusory here if Id not received code will crash
+                const id = info.find((info) => info.images === el)?.id!
+                router.push(`${route}/${id}`)
+              }}
+            >
               <Image
                 src={el}
                 className="h-80 w-full object-cover object-left-top rounded-lg gap-10 !m-0 !p-0"
