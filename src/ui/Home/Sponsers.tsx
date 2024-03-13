@@ -6,27 +6,27 @@ type Props = {};
 const Sponsors = (props: Props) => {
   const data = [
     {
-      imageSrc: "/bg-home.jpg",
+      imageSrc: "/tony-stark.jpg",
       name: "Tony Stark",
       title: "A Tale of Two Cities",
     },
     {
-      imageSrc: "/bg-home.jpg",
+      imageSrc: "/thor.jpg",
       name: "Tony Stark",
       title: "A Tale of Two Cities",
     },
     {
-      imageSrc: "/bg-home.jpg",
+      imageSrc: "/spiderman.jpg",
       name: "Tony Stark",
       title: "A Tale of Two Cities",
     },
     {
-      imageSrc: "/bg-home.jpg",
+      imageSrc: "/hella.jpg",
       name: "Tony Stark",
       title: "A Tale of Two Cities",
     },
     {
-      imageSrc: "/bg-home.jpg",
+      imageSrc: "/hulk.jpg",
       name: "Tony Stark",
       title: "A Tale of Two Cities",
     },
