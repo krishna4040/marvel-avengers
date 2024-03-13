@@ -23,7 +23,10 @@ const ComicSummarySchema = z.object({
 
 const ComicDateSchema = z.object({
     type: z.string(),
-    date: z.string(),
+    date: z.union([z.date(), z.string()]).transform(value => {
+        if (typeof value === 'string') return new Date(value);
+        return value;
+    })
 });
 
 const ComicPriceSchema = z.object({
@@ -43,8 +46,8 @@ const CreatorSummarySchema = z.object({
 });
 
 const ResourceSchema = z.object({
-    available: z.string(),
-    returned: z.string(),
+    available: z.number(),
+    returned: z.number(),
     collectionURI: z.string(),
     items: z.array(CreatorSummarySchema),
 });
@@ -56,19 +59,22 @@ const EventSummarySchema = z.object({
 
 const ResultSchema = z.object({
     id: z.number(),
-    digitalId: z.string(),
+    digitalId: z.number(),
     title: z.string(),
-    issueNumber: z.string(),
+    issueNumber: z.number(),
     variantDescription: z.string(),
     description: z.string(),
-    modified: z.date(),
+    modified: z.union([z.date(), z.string()]).transform(value => {
+        if (typeof value === 'string') return new Date(value);
+        return value;
+    }),
     isbn: z.string(),
     upc: z.string(),
     diamondCode: z.string(),
     ean: z.string(),
     issn: z.string(),
     format: z.string(),
-    pageCount: z.string(),
+    pageCount: z.number(),
     textObjects: z.array(TextObjectSchema),
     resourceURI: z.string(),
     urls: z.array(UrlSchema),
@@ -76,14 +82,14 @@ const ResultSchema = z.object({
     variants: z.array(ComicSummarySchema),
     collections: z.array(ComicSummarySchema),
     collectedIssues: z.array(ComicSummarySchema),
-    dates: z.array(ComicDateSchema),
+    // dates: z.array(ComicDateSchema),
     prices: z.array(ComicPriceSchema),
     thumbnail: ImageSchema,
     images: z.array(ImageSchema),
-    creators: ResourceSchema,
-    characters: ResourceSchema,
-    stories: ResourceSchema,
-    events: ResourceSchema,
+    // creators: ResourceSchema,
+    // characters: ResourceSchema,
+    // stories: ResourceSchema,
+    // events: ResourceSchema,
 });
 
 const DataSchema = z.object({
@@ -95,7 +101,7 @@ const DataSchema = z.object({
 });
 
 export const MyResponseSchema = z.object({
-    code: z.string(),
+    code: z.number(),
     status: z.string(),
     copyright: z.string(),
     attributionText: z.string(),
