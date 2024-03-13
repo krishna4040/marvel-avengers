@@ -5,6 +5,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { Typography } from "@mui/material";
 
+// icons
+import LoginIcon from "@mui/icons-material/Login";
+
 const Navbar = () => {
   const links = [
     {
@@ -34,9 +37,7 @@ const Navbar = () => {
     const handleScroll = () => {
       const currentScrollPos = window.pageYOffset;
 
-      setShowNavbar(
-        currentScrollPos < prevScrollPos || currentScrollPos <= 0
-      );
+      setShowNavbar(currentScrollPos < prevScrollPos || currentScrollPos <= 0);
       setPrevScrollPos(currentScrollPos);
     };
 
@@ -53,7 +54,7 @@ const Navbar = () => {
         showNavbar ? "" : "-translate-y-full"
       }`}
     >
-      <div className="p-5 flex flex-row items-center justify-between w-fit m-auto bg-slate-900 rounded-2xl">
+      <div className="p-5 flex flex-row items-center justify-between w-fit m-auto bg-slate-950 rounded-2xl">
         <div className="mr-11">
           <Link href={"/"}>
             <Image
@@ -77,6 +78,13 @@ const Navbar = () => {
               </Typography>
             </Link>
           ))}
+
+          <Link
+            href={"/Auth/join"}
+            className="bg-blue-950 p-3 rounded-full flex items-center justify-center"
+          >
+            <LoginIcon className="text-white font-black" />
+          </Link>
         </div>
       </div>
     </nav>

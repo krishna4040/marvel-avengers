@@ -43,10 +43,17 @@ const Timeline = (props: Props) => {
         <Typography
           variant="h1"
           component={"h3"}
-          className="font-black flex flex-row items-center justify-center text-white text-6xl p-2 text-center"
+          className="font-black flex flex-row items-center justify-center text-white text-6xl p-2 text-center gap-4"
         >
           <FavoriteIcon className="text-9xl text-red-700" />
           All you favourite Characters
+          <Typography
+            variant="caption"
+            component={"span"}
+            className="text-black bg-yellow-400 p-3 rounded-md font-black"
+          >
+            Latest
+          </Typography>
         </Typography>
 
         <div className="w-full h-screen overflow-y-auto snap-y snap-mandatory flex flex-col items-center p-5 my-3 gap-16">

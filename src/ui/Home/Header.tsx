@@ -1,8 +1,8 @@
-
-"use client"
+"use client";
 import React, { useState, useEffect } from "react";
 import { Typography } from "@mui/material";
-import Navbar from "./Navbar"; // Import the Navbar component
+import Navbar from "./Navbar";
+import Image from "next/image";
 
 const Header = () => {
   const [showNavbar, setShowNavbar] = useState(true);
@@ -33,9 +33,6 @@ const Header = () => {
           autoPlay
           loop
           className="w-full h-screen aspect-video object-cover"
-          // style={{
-          //   transform: "rotate(-90deg)",
-          // }}
         ></video>
         <div className="absolute top-0 left-0 w-full bg-black bg-opacity-50 flex flex-col items-center justify-center h-screen text-left">
           <Typography
@@ -58,16 +55,23 @@ const Header = () => {
             className="text-white font-medium text-lg"
           >
             With great power comes great responsibility.
-            {/* <Typography
+            <Typography
               variant="subtitle2"
               component={"span"}
               className="text-red-500 bg-white p-2 ml-2 rounded-md"
             >
               `Stan Lee`
-            </Typography> */}
+              <Image
+                src={"/stanlee.jpg"}
+                alt="/"
+                width={50}
+                height={50}
+                className="bg-white rounded-full p-1 aspect-square"
+              />
+            </Typography>
           </Typography>
         </div>
-        {/* Include the Navbar component here */}
+
         {showNavbar && <Navbar />}
       </div>
     </>
