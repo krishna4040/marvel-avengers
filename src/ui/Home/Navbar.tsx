@@ -5,6 +5,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { Typography } from "@mui/material";
 
+// icons
+import LoginIcon from "@mui/icons-material/Login";
+
 const Navbar = () => {
   const links = [
     {
@@ -69,6 +72,13 @@ const Navbar = () => {
               </Typography>
             </Link>
           ))}
+
+          <Link
+            href={"/Auth/join"}
+            className="bg-blue-950 p-3 rounded-full flex items-center justify-center"
+          >
+            <LoginIcon className="text-white font-black" />
+          </Link>
         </div>
       </div>
     </nav>
