@@ -4,19 +4,30 @@ import { useRef } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { cn } from "@/utils/cn";
+import { useRouter } from "next/navigation";
+
+type Info = {
+  images: string;
+  id: number
+}
 
 export const ParallaxScroll = ({
-  images,
+  info,
   className,
+  route
 }: {
-  images: string[];
+  info: Info[];
   className?: string;
+  route: string
 }) => {
   const gridRef = useRef<any>(null);
   const { scrollYProgress } = useScroll({
     container: gridRef, // remove this if your container is not fixed height
     offset: ["start start", "end start"], // remove this if your container is not fixed height
   });
+
+  const images = info.map(i => i.images)
+  const router = useRouter()
 
   const translateFirst = useTransform(scrollYProgress, [0, 1], [0, -200]);
   const translateSecond = useTransform(scrollYProgress, [0, 1], [0, 200]);
@@ -40,6 +51,11 @@ export const ParallaxScroll = ({
         <div className="grid gap-10">
           {firstPart.map((el, idx) => (
             <motion.div
+              onClick={() => {
+                // Id is compolusory here if Id not received code will crash
+                const id = info.find((info) => info.images === el)?.id!
+                router.push(`${route}/${id}`)
+              }}
               style={{ y: translateFirst }} // Apply the translateY motion value here
               key={"grid-1" + idx}
             >
@@ -55,7 +71,13 @@ export const ParallaxScroll = ({
         </div>
         <div className="grid gap-10">
           {secondPart.map((el, idx) => (
-            <motion.div style={{ y: translateSecond }} key={"grid-2" + idx}>
+            <motion.div style={{ y: translateSecond }} key={"grid-2" + idx}
+              onClick={() => {
+                // Id is compolusory here if Id not received code will crash
+                const id = info.find((info) => info.images === el)?.id!
+                router.push(`${route}/${id}`)
+              }}
+            >
               <Image
                 src={el}
                 className="h-80 w-full object-cover object-left-top rounded-lg gap-10 !m-0 !p-0"
@@ -68,7 +90,13 @@ export const ParallaxScroll = ({
         </div>
         <div className="grid gap-10">
           {thirdPart.map((el, idx) => (
-            <motion.div style={{ y: translateThird }} key={"grid-3" + idx}>
+            <motion.div style={{ y: translateThird }} key={"grid-3" + idx}
+              onClick={() => {
+                // Id is compolusory here if Id not received code will crash
+                const id = info.find((info) => info.images === el)?.id!
+                router.push(`${route}/${id}`)
+              }}
+            >
               <Image
                 src={el}
                 className="h-80 w-full object-cover object-left-top rounded-lg gap-10 !m-0 !p-0"

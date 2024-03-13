@@ -6,12 +6,7 @@ const nextConfig = {
             {
                 protocol: 'http',
                 hostname: 'i.annihil.us'
-            },
-            {
-                protocol : "https",
-                hostname : "img.freepik.com"
             }
-        ]
     }
 };
 
