@@ -82,7 +82,7 @@ const ResultSchema = z.object({
     variants: z.array(ComicSummarySchema),
     collections: z.array(ComicSummarySchema),
     collectedIssues: z.array(ComicSummarySchema),
-    // dates: z.array(ComicDateSchema),
+    dates: z.array(ComicDateSchema),
     prices: z.array(ComicPriceSchema),
     thumbnail: ImageSchema,
     images: z.array(ImageSchema),

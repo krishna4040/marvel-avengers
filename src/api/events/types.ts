@@ -16,46 +16,49 @@ const ThumbnailSchema = z.object({
 });
 
 const ResourceSchema = z.object({
-    available: z.string(),
-    returned: z.string(),
+    available: z.number(),
+    returned: z.number(),
     collectionURI: z.string(),
     items: z.array(ItemSchema),
 });
 
-const NextPreviousSchema = z.object({
-    resourceURI: z.string(),
-    name: z.string(),
-});
 
 const ResultSchema = z.object({
-    id: z.string(),
+    id: z.number(),
     title: z.string(),
     description: z.string(),
     resourceURI: z.string(),
     urls: z.array(UrlSchema),
-    modified: z.string(),
-    start: z.string(),
-    end: z.string(),
+    // modified: z.union([z.date(), z.string()]).transform(value => {
+    //     if (typeof value === 'string') return new Date(value);
+    //     return value;
+    // }),
+    // start: z.union([z.date(), z.string()]).transform(value => {
+    //     if (typeof value === 'string') return new Date(value);
+    //     return value;
+    // }),
+    // end: z.union([z.date(), z.string()]).transform(value => {
+    //     if (typeof value === 'string') return new Date(value);
+    //     return value;
+    // }),
     thumbnail: ThumbnailSchema,
     comics: ResourceSchema,
     stories: ResourceSchema,
     series: ResourceSchema,
     characters: ResourceSchema,
-    creators: ResourceSchema,
-    next: NextPreviousSchema,
-    previous: NextPreviousSchema,
+    creators: ResourceSchema
 });
 
 const DataSchema = z.object({
-    offset: z.string(),
-    limit: z.string(),
-    total: z.string(),
-    count: z.string(),
+    offset: z.number(),
+    limit: z.number(),
+    total: z.number(),
+    count: z.number(),
     results: z.array(ResultSchema),
 });
 
 export const MyResponseSchema = z.object({
-    code: z.string(),
+    code: z.number(),
     status: z.string(),
     copyright: z.string(),
     attributionText: z.string(),

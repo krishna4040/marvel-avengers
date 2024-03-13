@@ -6,7 +6,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 
 export const getEvents = async (limit: number = 10) => {
     const { hash, timestamps, publickey } = getApiDetails()
-    const url = `${BASE_URL}/events?ts=${timestamps}&apikey=${publickey}&hash=${hash}&limit=${limit}`
+    const url = `${BASE_URL}/events?limit=${limit}&ts=${timestamps}&apikey=${publickey}&hash=${hash}`
     const { data } = await axios.get(url)
     const {data: res} = MyResponseSchema.parse(data)
     return res.results
