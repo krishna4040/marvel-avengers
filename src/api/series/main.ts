@@ -16,6 +16,6 @@ export const getSeriesById = async (id: number, limit: number = 10) => {
     const { hash, timestamps, publickey } = getApiDetails()
     const url = `${BASE_URL}/series/${id}?ts=${timestamps}&apikey=${publickey}&hash=${hash}&limit=${limit}`
     const { data } = await axios.get(url)
-    const { data: res } = MyResponseSchema.parse(data.data)
+    const { data: res } = MyResponseSchema.parse(data)
     return res.results[0]
 }
