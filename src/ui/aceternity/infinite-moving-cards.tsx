@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { cn } from "@/utils/cn";
+import Image from "next/image";
 
 export const InfiniteMovingCards = ({
   items,
@@ -99,12 +100,12 @@ export const InfiniteMovingCards = ({
                 aria-hidden="true"
                 className="user-select-none -z-1 pointer-events-none absolute -left-0.5 -top-0.5 h-[calc(100%_+_4px)] w-[calc(100%_+_4px)]"
               ></div>
-              <img
+              <Image
                 src={item.imageSrc}
                 alt="/"
-                width={50}
-                height={50}
-                className="aspect-square w-full h-28"
+                width={380}
+                height={256}
+                
               />
               <div className="relative z-20 mt-6 flex flex-row items-center">
                 <span className="flex flex-col gap-1">

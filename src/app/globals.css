@@ -6,6 +6,11 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: white black;
+  scroll-behavior: smooth;
+  text-decoration: none;
+  list-style-type: none;
 }
 
 html,
@@ -28,4 +33,24 @@ body {
     scrollbar-width: none;
     /* Firefox */
   }
+}
+
+*::-webkit-scrollbar {
+  width: 1px;
+  height: 1px;
+}
+
+*::-webkit-scrollbar-track {
+  background: black;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: white;
+  border-radius: 20px;
+  border: 3px solid white;
+}
+
+::selection {
+  background: #ffff00;
+  color: #000;
 }

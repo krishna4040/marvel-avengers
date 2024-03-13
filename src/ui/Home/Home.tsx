@@ -4,6 +4,7 @@ import Slider from "./Slider";
 import Navbar from "./Navbar";
 import Timeline from "./Timeline";
 import Sponsers from "./Sponsers";
+import Quiz from "./Quiz";
 
 type Props = {};
 
@@ -14,7 +15,8 @@ const Home = (props: Props) => {
         <Navbar />
         <Header />
         <Slider />
-        <Timeline />
+        {/* <Timeline /> */}
+        <Quiz />
         <Sponsers />
       </section>
     </>

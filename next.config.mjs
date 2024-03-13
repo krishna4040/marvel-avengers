@@ -6,8 +6,7 @@ const nextConfig = {
             {
                 protocol: 'http',
                 hostname: 'i.annihil.us'
-            },
-        ]
+            }
     }
 };
 
