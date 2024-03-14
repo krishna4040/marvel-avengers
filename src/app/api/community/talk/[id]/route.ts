@@ -1,7 +1,7 @@
 import { NextResponse, NextRequest } from "next/server";
 import { getServerSession } from "next-auth/next";
 import { getToken } from "next-auth/jwt";
-import { authOptions } from "@/api/auth/[...nextauth]/route";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { connectToDB } from "@/lib/DB/connect";
 import { UserModel } from "@/lib/DB/models/user.model";
 import { ClubModel, Club } from "@/lib/DB/models/club.model";
@@ -11,6 +11,13 @@ interface JsonRequest {
   clubId: string;
   message: string;
   content?: string;
+}
+
+interface Session {
+  user: {
+    name: string;
+    email: string;
+  };
 }
 
 export const POST = async (req: NextRequest, res: NextResponse) => {
@@ -25,8 +32,8 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
 
     // finding the user in db
     const user = await UserModel.findOne({
-      name: session.user.name,
-      email: session.user.email,
+      name: (session as Session).user.name,
+      email: (session as Session).user.email,
     });
     if (!user) throw new Error(`User not found`);
 

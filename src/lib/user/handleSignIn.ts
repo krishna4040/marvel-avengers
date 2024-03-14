@@ -1,5 +1,5 @@
-import { connectToDB } from "@/lib/DB/connect.js";
-import { UserModel } from "@/lib/DB/models/user.model.js";
+import { connectToDB } from "@/lib/DB/connect";
+import { UserModel } from "@/lib/DB/models/user.model";
 import bcrypt from "bcrypt";
 import crypto from "crypto";
 
@@ -36,7 +36,6 @@ export const handleSignIn = async ({
         name: name,
         email,
         image: user.image,
-        joined_at: user.createdAt,
       };
 
       return {
@@ -68,7 +67,6 @@ export const handleSignIn = async ({
       name,
       email,
       image: newUser?.image,
-      joined_at: newUser?.createdAt,
     };
 
     return {

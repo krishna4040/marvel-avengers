@@ -1,18 +1,67 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { Label } from "@/ui/aceternity/label";
 import { Input } from "@/ui/aceternity/input";
 import { cn } from "@/utils/cn";
 import { IconBrandGithub, IconBrandGoogle } from "@tabler/icons-react";
 import FaceIcon from "@mui/icons-material/Face";
+import { useSession, signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 type Props = {};
 
 const Auth = (props: Props) => {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const { data: session, status } = useSession();
+  const router = useRouter();
+
+  const [loading, setLoading] = useState(false);
+
+  const [formData, setFormData] = useState({
+    fname: "",
+    lname: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("Form submitted");
+
+    if (
+      formData.fname.length == 0 ||
+      formData.lname.length == 0 ||
+      formData.email.length == 0 ||
+      formData.password.length == 0
+    ) {
+      return;
+    }
+
+    if (formData.password != formData.confirmPassword) {
+      return;
+    }
+
+    try {
+      const res = await signIn("user_credentials", {
+        redirect: false,
+        name: formData.fname + "-" + formData.lname,
+        email: formData.email,
+        password: formData.password,
+      });
+
+      if (res?.ok) {
+        router.replace("/");
+      } else {
+        alert("[!] Error, Invalid Details.");
+      }
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   return (
@@ -31,11 +80,23 @@ const Auth = (props: Props) => {
             <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
               <LabelInputContainer>
                 <Label htmlFor="firstname">First name</Label>
-                <Input id="firstname" placeholder="Karan" type="text" />
+                <Input
+                  id="firstname"
+                  placeholder="Karan"
+                  type="text"
+                  name="fname"
+                  onChange={handleChange}
+                />
               </LabelInputContainer>
               <LabelInputContainer>
                 <Label htmlFor="lastname">Last name</Label>
-                <Input id="lastname" placeholder="Yadav" type="text" />
+                <Input
+                  id="lastname"
+                  placeholder="Yadav"
+                  type="text"
+                  name="lname"
+                  onChange={handleChange}
+                />
               </LabelInputContainer>
             </div>
             <LabelInputContainer className="mb-4">
@@ -44,26 +105,37 @@ const Auth = (props: Props) => {
                 id="email"
                 placeholder="karan@marvelhead.com"
                 type="email"
+                name="email"
+                onChange={handleChange}
               />
             </LabelInputContainer>
             <LabelInputContainer className="mb-4">
               <Label htmlFor="password">Password</Label>
-              <Input id="password" placeholder="••••••••" type="password" />
+              <Input
+                id="password"
+                placeholder="••••••••"
+                type="password"
+                name="password"
+                onChange={handleChange}
+              />
             </LabelInputContainer>
             <LabelInputContainer className="mb-8">
-              <Label htmlFor="twitterpassword">Retype-Password</Label>
+              <Label htmlFor="retypePassword">Retype-Password</Label>
               <Input
                 id="confirmPassword"
                 placeholder="••••••••"
-                type="twitterpassword"
+                type="retypePassword"
+                name="confirmPassword"
+                onChange={handleChange}
               />
             </LabelInputContainer>
 
             <button
-              className="bg-gradient-to-br relative group/btn from-black via-slate-900 to-zinc-950 block dark:bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
+              className="bg-gradient-to-br relative group/btn from-black via-slate-900 to-zinc-950 block dark:bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset] disabled:cursor-wait"
               type="submit"
+              disabled={loading}
             >
-              Login &rarr;
+              {!loading ? <>Login &rarr;</> : <>Logging in...</>}
               <BottomGradient />
             </button>
 

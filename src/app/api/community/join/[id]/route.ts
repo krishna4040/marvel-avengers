@@ -1,14 +1,20 @@
 import { NextResponse, NextRequest } from "next/server";
 import { getServerSession } from "next-auth/next";
 import { getToken } from "next-auth/jwt";
-import { authOptions } from "@/api/auth/[...nextauth]/route";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { connectToDB } from "@/lib/DB/connect";
 import { UserModel } from "@/lib/DB/models/user.model.js";
 import { ClubModel, Club } from "@/lib/DB/models/club.model.js";
 
 interface JsonRequest {
-  name: string;
-  image: string | undefined;
+  clubId: string;
+}
+
+interface Session {
+  user: {
+    name: string;
+    email: string;
+  };
 }
 
 export const POST = async (req: NextRequest, res: NextResponse) => {
@@ -23,30 +29,29 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
 
     // finding the user in db
     const user = await UserModel.findOne({
-      name: session.user.name,
-      email: session.user.email,
+      name: (session as Session).user.name,
+      email: (session as Session).user.email,
     });
     if (!user) throw new Error(`User not found`);
 
     // get the new club data
-    const { name, image }: JsonRequest = await req.json();
-    if (!name || !image) throw new Error(`All fields are required`);
+    const { clubId }: JsonRequest = await req.json();
+    if (!clubId) throw new Error(`All fields are required`);
 
     // checking if the club already exists
-    const exists: Club | null = await ClubModel.findOne({ name });
-    if (exists) throw new Error(`Club already exists`);
+    const exists: Club | null = await ClubModel.findById({ _id: clubId });
+    if (!exists) throw new Error(`Club do not exists`);
 
-    // create a new club
-    const newClub = new ClubModel({
-      name,
-      image,
-      users: [user?._id],
-    });
-    await newClub.save();
+    // checking if already exists in the club
+    if (exists?.users.includes(user._id))
+      throw new Error(`Already exists in the club`);
+
+    // joining the club
+    await ClubModel.updateOne({ _id: clubId }, { $push: { users: user._id } });
 
     return NextResponse.json({
       success: true,
-      message: "Created new Club successfully",
+      message: "Joined successfully",
     });
   } catch (err: any) {
     return NextResponse.json({

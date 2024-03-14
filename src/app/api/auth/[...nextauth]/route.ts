@@ -9,7 +9,7 @@ import { handleSignIn } from "@/lib/user/handleSignIn";
 export const authOptions: any = {
   providers: [
     CredentialsProvider({
-      id: "credentials",
+      id: "user_credentials",
       name: "Credentials",
       credentials: {
         name: { label: "name", type: "text" },
@@ -43,17 +43,19 @@ export const authOptions: any = {
       },
     }),
     GithubProvider({
+      id: "github",
       clientId: process.env.GITHUB_CLIENT_ID ?? "",
       clientSecret: process.env.GITHUB_CLIENT_SECRET ?? "",
     }),
     GoogleProvider({
+      id: "google",
       clientId: process.env.GOOGLE_CLIENT_ID ?? "",
       clientSecret: process.env.GOOGLE_CLIENT_SECRET ?? "",
     }),
   ],
   callbacks: {
     async signIn({ user, account }: { user: AuthUser; account: Account }) {
-      if (account?.provider == "credentials") {
+      if (account?.provider == "user_credentials") {
         return true;
       }
       if (account?.provider == "github" || account?.provider == "google") {
