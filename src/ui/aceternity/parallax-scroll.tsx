@@ -51,6 +51,8 @@ export const ParallaxScroll = ({
         <div className="grid gap-10">
           {firstPart.map((el, idx) => (
             <motion.div
+              whileHover={{ scale: 1.05, boxShadow: "0 4px 8px rgba(0,0,0,0.1)" }}
+              className="cursor-pointer transition-shadow duration-300 ease-in-out"
               onClick={() => {
                 // Id is compolusory here if Id not received code will crash
                 const id = info.find((info) => info.images === el)?.id!
@@ -71,7 +73,8 @@ export const ParallaxScroll = ({
         </div>
         <div className="grid gap-10">
           {secondPart.map((el, idx) => (
-            <motion.div style={{ y: translateSecond }} key={"grid-2" + idx}
+            <motion.div  whileHover={{ scale: 1.05, boxShadow: "0 4px 8px rgba(0,0,0,0.1)" }}
+            className="cursor-pointer transition-shadow duration-300 ease-in-out" style={{ y: translateSecond }} key={"grid-2" + idx}
               onClick={() => {
                 // Id is compolusory here if Id not received code will crash
                 const id = info.find((info) => info.images === el)?.id!
@@ -90,7 +93,8 @@ export const ParallaxScroll = ({
         </div>
         <div className="grid gap-10">
           {thirdPart.map((el, idx) => (
-            <motion.div style={{ y: translateThird }} key={"grid-3" + idx}
+            <motion.div  whileHover={{ scale: 1.05, boxShadow: "0 4px 8px rgba(0,0,0,0.1)" }}
+            className="cursor-pointer transition-shadow duration-300 ease-in-out" style={{ y: translateThird }} key={"grid-3" + idx}
               onClick={() => {
                 // Id is compolusory here if Id not received code will crash
                 const id = info.find((info) => info.images === el)?.id!
