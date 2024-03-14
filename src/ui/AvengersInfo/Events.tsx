@@ -4,7 +4,7 @@ import { getEvents } from '@/api/events/main';
 
 const Events = async () => {
 
-    const events = await getEvents(100)
+    const events = await getEvents(20)
     const modifiedEvents = events.map(event => {
         return {
             images: event.thumbnail.path + "." + event.thumbnail.extension,

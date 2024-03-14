@@ -4,7 +4,7 @@ import { ParallaxScroll } from '../aceternity/parallax-scroll';
 
 const Series = async () => {
 
-    const series = await getSeries(100)
+    const series = await getSeries(20)
     const modifiedSeries = series.map(s => {
         return {
             images: s.thumbnail.path + "." + s.thumbnail.extension,
