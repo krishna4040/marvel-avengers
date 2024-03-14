@@ -1,4 +1,4 @@
-import NextAuth, { AuthOptions } from "next-auth";
+import NextAuth, { NextAuthOptions } from "next-auth";
 import { Account, User as AuthUser } from "next-auth";
 import GithubProvider from "next-auth/providers/github";
 import CredentialsProvider from "next-auth/providers/credentials";
@@ -7,7 +7,7 @@ import { connectToDB } from "@/lib/DB/connect";
 import { handleSignIn } from "@/lib/user/handleSignIn";
 import { AdapterUser } from "next-auth/adapters";
 
-export const authOptions: AuthOptions = {
+export const authOptions: NextAuthOptions = {
   providers: [
     CredentialsProvider({
       id: "user_credentials",
