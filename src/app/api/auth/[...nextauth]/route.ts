@@ -1,12 +1,13 @@
-import NextAuth from "next-auth";
+import NextAuth, { AuthOptions } from "next-auth";
 import { Account, User as AuthUser } from "next-auth";
 import GithubProvider from "next-auth/providers/github";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 import { connectToDB } from "@/lib/DB/connect";
 import { handleSignIn } from "@/lib/user/handleSignIn";
+import { AdapterUser } from "next-auth/adapters";
 
-export const authOptions: any = {
+export const authOptions: AuthOptions = {
   providers: [
     CredentialsProvider({
       id: "user_credentials",
@@ -54,7 +55,7 @@ export const authOptions: any = {
     }),
   ],
   callbacks: {
-    async signIn({ user, account }: { user: AuthUser; account: Account }) {
+    async signIn({ user, account }: { user: AuthUser | AdapterUser; account: Account | null ; }) {
       if (account?.provider == "user_credentials") {
         return true;
       }
@@ -79,6 +80,7 @@ export const authOptions: any = {
           return false;
         }
       }
+      return false;
     },
   },
 };
