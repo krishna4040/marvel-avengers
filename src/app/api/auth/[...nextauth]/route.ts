@@ -7,7 +7,7 @@ import { connectToDB } from "@/lib/DB/connect";
 import { handleSignIn } from "@/lib/user/handleSignIn";
 import { AdapterUser } from "next-auth/adapters";
 
-export const authOptions: NextAuthOptions = {
+export const authOptions: any = {
   providers: [
     CredentialsProvider({
       id: "user_credentials",
@@ -85,6 +85,6 @@ export const authOptions: NextAuthOptions = {
   },
 };
 
-const handler = NextAuth(authOptions) as never;
+export const handler = NextAuth(authOptions);
 
 export { handler as GET, handler as POST };
