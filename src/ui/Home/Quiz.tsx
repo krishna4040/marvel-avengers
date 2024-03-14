@@ -4,6 +4,7 @@ import quizData from '../../../public/quiz.json';
 import Lottie from "lottie-react";
 import { FollowerPointerCard } from '../aceternity/following-pointer';
 import Image from 'next/image';
+import Link from 'next/link';
 
 type Props = {};
 
@@ -38,7 +39,7 @@ const Quiz = (props: Props) => {
                   </h2>
                   <div className="flex flex-row justify-between items-center mt-10">
                     <div className="relative z-10 px-6 py-2 bg-black text-white font-bold rounded-xl block text-xs">
-                      Take Quiz & Explore Merchandise
+                      <Link className='text-white' target='_blank' href={"/quiz"}>Take Quiz & Explore Merchandise</Link>
                     </div>
                   </div>
                 </div>
