@@ -3,8 +3,8 @@ import { getServerSession } from "next-auth/next";
 import { getToken } from "next-auth/jwt";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { connectToDB } from "@/lib/DB/connect";
-import { UserModel } from "@/lib/DB/models/user.model.js";
-import { ClubModel, Club } from "@/lib/DB/models/club.model.js";
+import { UserModel } from "@/lib/DB/models/user.model";
+import { ClubModel, Club } from "@/lib/DB/models/club.model";
 
 interface JsonRequest {
   name: string;
