@@ -1,10 +1,9 @@
 import { NextResponse, NextRequest } from "next/server";
-import { getServerSession } from "next-auth/next";
 import { getToken } from "next-auth/jwt";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { connectToDB } from "@/lib/DB/connect";
 import { UserModel } from "@/lib/DB/models/user.model";
 import { ClubModel, Club } from "@/lib/DB/models/club.model";
+import { currentUser } from "@/lib/server-session";
 
 interface JsonRequest {
   clubId: string;
@@ -19,10 +18,8 @@ interface Session {
 
 export const POST = async (req: NextRequest, res: NextResponse) => {
   try {
-    // getting the session details
-    const token = await getToken({ req });
-    const session = await getServerSession(authOptions);
-    if (!token || !session) throw new Error(`Not authenticated`);
+    const session = await currentUser();
+    if (!session) throw new Error(`Not authenticated`);
 
     // connect to db
     await connectToDB();

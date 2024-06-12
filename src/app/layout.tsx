@@ -8,7 +8,7 @@ import "@fontsource/roboto/700.css";
 import { StyledEngineProvider } from "@mui/material/styles";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 import CssBaseLine from "@mui/material/CssBaseline";
-import { getServerSession } from "next-auth";
+import { currentUser } from "@/lib/server-session";
 import StoreProvider from "./StoreProvider";
 import { AuthProvider } from "@/ui/ComponentExporters";
 
@@ -24,7 +24,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const session = await getServerSession();
+  const session = await currentUser();
 
   return (
     <html lang="en">
