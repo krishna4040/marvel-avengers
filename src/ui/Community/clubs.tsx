@@ -4,6 +4,7 @@ import { Typography } from "@mui/material";
 
 // icons
 import Groups3Icon from "@mui/icons-material/Groups3";
+import Image from "next/image";
 
 type Props = {};
 
@@ -30,7 +31,7 @@ const Clubs = (props: Props) => {
               key={i}
               className="flex flex-row items-center justify-between p-3 bg-slate-700 rounded-lg w-full my-3"
             >
-              <img
+              <Image
                 src={club.imageSrc}
                 alt="/"
                 width={50}

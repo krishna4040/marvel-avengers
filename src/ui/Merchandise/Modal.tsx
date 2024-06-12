@@ -1,5 +1,6 @@
 // ui/common/Modal.tsx
 
+import Image from 'next/image';
 import React from 'react';
 
 interface Product {
@@ -25,7 +26,7 @@ const Modal: React.FC<Props> = ({ product, onClose }) => {
           </svg>
         </button>
         <h2 className="text-2xl font-bold mb-4">{product.name}</h2>
-        <img src={product.image} alt={product.name} className="w-full mb-4" />
+        <Image src={product.image} alt={product.name} className="w-full mb-4" />
         <p className="text-gray-700 mb-4">{product.description}</p>
         <p className="text-gray-700 mb-4">{product.price}</p>
         <button className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition-colors" onClick={onClose}>Add to Cart</button>

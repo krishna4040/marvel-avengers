@@ -9,6 +9,7 @@ import { EffectCoverflow, Pagination , Autoplay } from 'swiper/modules';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 import 'swiper/css'
+import Image from "next/image";
 
 
 type Props = {};
@@ -138,7 +139,7 @@ const SliderComponent = ({
           {desc}
         </CardItem>
         <CardItem translateZ="100" className="w-full mt-4">
-          <img
+          <Image
             src={imageSrc}
             height="1000"
             width="1000"

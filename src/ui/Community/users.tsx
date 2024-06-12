@@ -4,6 +4,7 @@ import Title from "./Title";
 // icons
 import Face5Icon from "@mui/icons-material/Face5";
 import { Typography } from "@mui/material";
+import Image from "next/image";
 
 type Props = {};
 
@@ -26,7 +27,7 @@ const Users = (props: Props) => {
               key={i}
               className="flex flex-row items-center justify-between p-3 bg-slate-700 rounded-lg w-full my-3"
             >
-              <img
+              <Image
                 src={user.imageSrc}
                 alt="/"
                 width={50}

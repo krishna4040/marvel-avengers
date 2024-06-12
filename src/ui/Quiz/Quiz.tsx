@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import ScorePage from "./Scorepage";
 import DangerousIcon from "@mui/icons-material/Dangerous";
 import CheckIcon from "@mui/icons-material/Check";
+import Image from "next/image";
 
 type Quiz = {
   title: string;
@@ -65,8 +66,11 @@ const QuizPage = ({ quizData }: QuizPageProps) => {
       ) : (
         <section className="w-full py-5 min-h-screen text-white px-6 sm:px-16 xl:flex xl:w-full xl:px-0 bg-slate-900">
           <div className="flex flex-col items-center justify-center w-1/2">
-            <img
+            <Image
               src="/quiz-icon.jpg"
+              alt="Quiz Icon"
+              width={128}
+              height={160}
               className="rounded-3xl w-32 h-40 aspect-auto shadow-md shadow-slate-600"
             />
             <span className="p-2 my-1">Quiz</span>

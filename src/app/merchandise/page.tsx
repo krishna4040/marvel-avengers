@@ -6,7 +6,7 @@ const Page = () => {
   return (
     <>
     <Navbar />
-      <Merchandise image="" price="" description="" name="" />
+      <Merchandise />
     </>
   );
 };

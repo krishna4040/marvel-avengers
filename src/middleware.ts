@@ -39,4 +39,8 @@ export const middleware = auth(req => {
 
 export const config = {
     matcher: ['/((?!.*\\..*|_next).*)', '/', '/(api|trpc)(.*)'],
+    runtime: 'experimental-edge',
+    unstable_allowDynamic: [
+        '/node_modules/mongoose/dist/browser.umd.js',
+    ],
 };

@@ -4,6 +4,7 @@
 import React, { useState } from 'react';
 import { Navbar } from '@/ui/ComponentExporters';
 import Modal from './Modal'; // Import your modal component
+import Image from 'next/image';
 
 // Define a type or interface for the product
 interface Product {
@@ -56,7 +57,7 @@ interface ProductCardProps {
 const ProductCard: React.FC<ProductCardProps> = ({ product, onViewDetails }) => {
   return (
     <div className="bg-gray-300 rounded-xl p-6 cursor-pointer transition duration-300 transform hover:scale-105">
-      <img src={product.image} alt={product.name} className="w-full rounded-md mb-4 max-w-xs" />
+      <Image src={product.image} alt={product.name} className="w-full rounded-md mb-4 max-w-xs" />
       <h2 className="text-xl font-semibold">{product.name}</h2>
       <p className="text-gray-400 mb-2">{product.price}</p>
       <button className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition-colors" onClick={() => onViewDetails(product)}>View Details</button>

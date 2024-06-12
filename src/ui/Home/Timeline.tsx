@@ -6,6 +6,7 @@ import { PinContainer } from "@/ui/aceternity/3d-pin";
 
 // icons
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import Image from "next/image";
 
 type Props = {};
 
@@ -96,7 +97,7 @@ export const AnimatedCard = ({
             <span className="text-slate-500">{desc.substring(0, 50)}</span>
           </div>
           <div className="flex flex-1 w-full rounded-lg mt-4 bg-gradient-to-br from-violet-500 via-purple-500 to-blue-500">
-            <img
+            <Image
               src={imageSrc}
               alt="/"
               className="w-full aspect-video rounded-md"

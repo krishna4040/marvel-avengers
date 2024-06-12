@@ -2,7 +2,6 @@ import type { NextAuthConfig } from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
 import GithubProvider from 'next-auth/providers/github'
 import GoogleProvider from 'next-auth/providers/google'
-import { connectToDB } from "@/lib/DB/connect";
 import { handleSignIn } from "@/lib/user/handleSignIn";
 
 export default {
@@ -16,7 +15,6 @@ export default {
                 password: { label: "Password", type: "password" },
             },
             async authorize(credentials: any) {
-                await connectToDB();
                 try {
                     const res = await handleSignIn({
                         name: credentials.name,

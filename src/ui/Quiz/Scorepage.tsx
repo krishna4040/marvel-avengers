@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 type ScorePageProps = {
@@ -22,7 +23,7 @@ const ScorePage = ({ title, score, numberOfQuestions }: ScorePageProps) => {
           <div className="flex h-[72px] items-center justify-center">
             <div className="flex items-center justify-center gap-4">
               <div className="flex items-center justify-center rounded-md p-2 bg-white">
-                <img src={"/quiz-icon.jpg"} alt={title} className="h-20 w-14" />
+                <Image src={"/quiz-icon.jpg"} alt={title} className="h-20 w-14" />
               </div>
               <h1 className="text-[18px] font-medium sm:text-[28px]">
                 {title}

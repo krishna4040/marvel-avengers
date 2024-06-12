@@ -21,7 +21,7 @@
     "@reduxjs/toolkit": "^2.2.1",
     "@tabler/icons-react": "^3.0.1",
     "axios": "^1.6.5",
-    "bcrypt": "^5.1.1",
+    "bcryptjs": "^2.4.3",
     "clsx": "^2.1.0",
     "firebase": "^10.8.1",
     "framer-motion": "^11.0.12",
@@ -41,6 +41,7 @@
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",
+    "@types/bcryptjs": "^2.4.6",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

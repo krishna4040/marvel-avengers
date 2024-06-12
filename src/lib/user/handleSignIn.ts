@@ -1,6 +1,6 @@
 import { connectToDB } from "@/lib/DB/connect";
 import { UserModel } from "@/lib/DB/models/user.model";
-import bcrypt from "bcrypt";
+import bcryptjs from "bcryptjs";
 import crypto from "crypto";
 
 export const handleSignIn = async ({
@@ -56,7 +56,7 @@ export const handleSignIn = async ({
     await new UserModel({
       name,
       email,
-      password: bcrypt.hashSync(password, 10),
+      password: bcryptjs.hashSync(password, 10),
       image,
       method,
     }).save();
