@@ -8,7 +8,9 @@ import "@fontsource/roboto/700.css";
 import { StyledEngineProvider } from "@mui/material/styles";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 import CssBaseLine from "@mui/material/CssBaseline";
-import StoreProvider from './StoreProvider'
+import { currentUser } from "@/lib/server-session";
+import StoreProvider from "./StoreProvider";
+import { AuthProvider } from "@/ui/ComponentExporters";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,21 +19,25 @@ export const metadata: Metadata = {
   description: "This is a Hackathon project",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const session = await currentUser();
+
   return (
     <html lang="en">
       <body className={inter.className}>
-        <StoreProvider>
-          <AppRouterCacheProvider>
-            <StyledEngineProvider injectFirst>
-              {children}
-            </StyledEngineProvider>
-          </AppRouterCacheProvider>
-        </StoreProvider>
+        <AuthProvider session={session}>
+          <StoreProvider>
+            <AppRouterCacheProvider>
+              <StyledEngineProvider injectFirst>
+                {children}
+              </StyledEngineProvider>
+            </AppRouterCacheProvider>
+          </StoreProvider>
+        </AuthProvider>
       </body>
     </html>
   );

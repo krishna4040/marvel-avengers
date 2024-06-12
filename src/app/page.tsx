@@ -1,11 +1,13 @@
-import React from 'react'
 
-const Page = () => {
+import React from "react";
+import { HomePage } from "@/ui/ComponentExporters";
+
+const Page = async () => {
   return (
-    <div>
-      Home
-    </div>
-  )
-}
+    <>
+      <HomePage />
+    </>
+  );
+};
 
-export default Page
+export default Page;
