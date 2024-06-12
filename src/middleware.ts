@@ -42,5 +42,6 @@ export const config = {
     runtime: 'experimental-edge',
     unstable_allowDynamic: [
         '/node_modules/mongoose/dist/browser.umd.js',
+        '/src/lib/DB/connect.js'
     ],
 };
