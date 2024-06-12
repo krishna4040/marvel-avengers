@@ -1,6 +1,6 @@
 import mongoose, { Schema, Model, Document, Types } from "mongoose";
 
-export interface Club extends Document {
+interface Club extends Document {
   users: Types.ObjectId[];
   name: string;
   image: string;
@@ -30,7 +30,7 @@ const clubSchema = new Schema<Club>(
   { timestamps: true }
 );
 
-const ClubModel: Model<Club> =
-  mongoose.models["club"] || mongoose.model<Club>("club", clubSchema);
+const ClubModel: Model<Club> = mongoose.models ? 
+  mongoose.models["club"] : mongoose.model<Club>("club", clubSchema);
 
 export { ClubModel };

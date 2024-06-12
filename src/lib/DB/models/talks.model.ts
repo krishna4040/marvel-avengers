@@ -1,6 +1,6 @@
 import mongoose, { Schema, Model, Document, Types } from "mongoose";
 
-export interface Talk extends Document {
+interface Talk extends Document {
   clubId: Types.ObjectId;
   talks: {
     userId: Types.ObjectId;
@@ -32,7 +32,7 @@ const talkSchema = new Schema<Talk>(
   { timestamps: true }
 );
 
-const TalkModel: Model<Talk> =
-  mongoose.models["talk"] || mongoose.model<Talk>("talk", talkSchema);
+const TalkModel: Model<Talk> = mongoose.models ?
+  mongoose.models["talk"] : mongoose.model<Talk>("talk", talkSchema);
 
 export { TalkModel };

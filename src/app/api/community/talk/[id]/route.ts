@@ -2,8 +2,9 @@ import { NextResponse, NextRequest } from "next/server";
 import { currentUser } from "@/lib/server-session";
 import { connectToDB } from "@/lib/DB/connect";
 import { UserModel } from "@/lib/DB/models/user.model";
-import { ClubModel, Club } from "@/lib/DB/models/club.model";
-import { TalkModel, Talk } from "@/lib/DB/models/talks.model";
+import { ClubModel } from "@/lib/DB/models/club.model";
+import { Club, Talk } from "@/lib/DB/models-interface/interface";
+import { TalkModel } from "@/lib/DB/models/talks.model";
 
 interface JsonRequest {
   clubId: string;

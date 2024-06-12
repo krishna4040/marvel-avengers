@@ -1,7 +1,8 @@
 import { NextResponse, NextRequest } from "next/server";
 import { connectToDB } from "@/lib/DB/connect";
 import { UserModel } from "@/lib/DB/models/user.model";
-import { ClubModel, Club } from "@/lib/DB/models/club.model";
+import { ClubModel } from "@/lib/DB/models/club.model";
+import { Club } from "@/lib/DB/models-interface/interface";
 import { currentUser } from "@/lib/server-session";
 
 interface JsonRequest {

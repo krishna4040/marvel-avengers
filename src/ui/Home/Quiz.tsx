@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import quizData from '../../../public/quiz.json';
+import quizData from '@/../public/quiz.json';
 import Lottie from "lottie-react";
 import { FollowerPointerCard } from '../aceternity/following-pointer';
 import Image from 'next/image';
