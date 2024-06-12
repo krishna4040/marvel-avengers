@@ -43,7 +43,6 @@ const authSchema = new Schema<User>(
   { timestamps: true }
 );
 
-const UserModel: Model<User> =
-  mongoose.models["user"] || mongoose.model<User>("user", authSchema);
+const UserModel: Model<User> = mongoose.models["users"] ||  mongoose.model("users", authSchema);
 
 export { UserModel };

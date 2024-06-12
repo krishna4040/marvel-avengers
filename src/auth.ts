@@ -34,4 +34,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             return false
         },
     },
+    pages: {
+        signIn: '/Auth/join',
+        newUser: '/Auth/join'
+    }
 });
